@@ -1,0 +1,47 @@
+@model IEnumerable<AdminTask.Models.User>
+
+@{
+    ViewBag.Title = "User List";
+}
+
+<div class="container">
+    <h2>Lista de Usuarios</h2>
+
+    <p>
+        <a class="btn btn-success" href="@Url.Action("Create")">Crear Nuevo Usuario</a>
+    </p>
+
+    @if (!Model.Any())
+    {
+        <p>No hay usuarios disponibles.</p>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Número de Teléfono</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.Name</td>
+                        <td>@user.Email</td>
+                        <td>@user.PhoneNumber</td>
+                        <td>@user.DateOfBirth.ToString("dd/MM/yyyy")</td>
+                        <td>
+                            <a class="btn btn-primary" href="@Url.Action("Edit", new { id = user.Id })">Editar</a>
+                            <a class="btn btn-danger" href="@Url.Action("Delete", new { id = user.Id })">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

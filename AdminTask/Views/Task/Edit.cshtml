@@ -1,0 +1,27 @@
+@model AdminTask.Models.Task
+
+<h1>Editar Tarea</h1>
+
+<form asp-action="Editar">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Titulo" class="control-label"></label>
+        <input asp-for="Titulo" class="form-control" />
+        <span asp-validation-for="Titulo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Descripcion" class="control-label"></label>
+        <input asp-for="Descripcion" class="form-control" />
+        <span asp-validation-for="Descripcion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FechaVencimiento" class="control-label"></label>
+        <input asp-for="FechaVencimiento" class="form-control" />
+        <span asp-validation-for="FechaVencimiento" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Guardar cambios" class="btn btn-primary" />
+    </div>
+</form>
+
+<a asp-controller="Tareas" asp-action="Index">Volver a la lista de tareas</a>

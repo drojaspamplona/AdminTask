@@ -1,0 +1,46 @@
+@model List<AdminTask.Models.Task>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Lista de Tareas</h1>
+            @if (!Model.Any())
+            {
+                <p>No hay tareas disponibles.</p>
+            }
+            else
+            {
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Título</th>
+                            <th>Descripción</th>
+                            <th>Fecha de Vencimiento</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var tarea in Model)
+                        {
+                            <tr>
+                                <td>@tarea.Id</td>
+                                <td>@tarea.Title</td>
+                                <td>@tarea.Description</td>
+                                <td>@tarea.DueDate.ToString("dd/MM/yyyy")</td>
+                                <td>@tarea.Status</td>
+                                <td>
+                                    <a asp-controller="Tareas" asp-action="Detail" asp-route-id="@tarea.Id" class="btn btn-info">Detalle</a>
+                                    <a asp-controller="Tareas" asp-action="Edit" asp-route-id="@tarea.Id" class="btn btn-primary">Editar</a>
+                                    <a asp-controller="Tareas" asp-action="Delete" asp-route-id="@tarea.Id" class="btn btn-danger">Eliminar</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            <a class="nav-link btn btn-success" href="/Tareas/Create">Crear Nueva Tarea</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+@model AdminTask.Models.Task
+
+<h1>Detalles de Tarea</h1>
+
+<div>
+    <h4>Título: @Model.Title</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Id:</dt>
+        <dd>@Model.Id</dd>
+        <dt>Descripción:</dt>
+        <dd>@Model.Description</dd>
+        <dt>Fecha de Vencimiento:</dt>
+        <dd>@Model.DueDate.ToShortDateString()</dd>
+        <dt>Estado:</dt>
+        <dd>@Model.Status</dd>
+    </dl>
+</div>
+<div>
+    <a asp-controller="Tareas" asp-action="Editar" asp-route-id="@Model.Id">Editar</a> |
+    <a asp-controller="Tareas" asp-action="Index">Volver a la lista de tareas</a>
+</div>

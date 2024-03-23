@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Admin Tasks";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>App Tareas</title>
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/site.css" rel="stylesheet" /> 
+</head>
+<body>
+
+    <header class="bg-primary text-white py-3">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1 class="display-4 mb-0">Administrador de usuarios y tareas</h1>
+        </div>
+    </header>
+
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0">Administrar usuarios</h4>
+                        @Html.ActionLink("Ver usuarios", "Index", "User", null, new { @class = "btn btn-light btn-sm" })
+                    </div>
+                    <div class="card-body">
+                        <p>Crear y gestionar usuarios.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0">Administración tareas</h4>
+                        @Html.ActionLink("Ver tareas", "Index", "Task", null, new { @class = "btn btn-light btn-sm" })
+                    </div>
+                    <div class="card-body">
+                        <p>Administrar tareas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="container-fluid mt-5">
+        <div class="row justify-content-between">
+            <div class="col-md-6">
+                <h2 class="text-left">Tareas Asignadas a Usuarios</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Usuario</th>
+                                <th scope="col">Título de la Tarea</th>
+                                <th scope="col">Descripción de la Tarea</th>
+                                <th scope="col">Fecha de Vencimiento</th>
+                                <th scope="col">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var userTask in Model)
+                            {
+                                <tr>
+                                    <td>@userTask.User.Name</td>
+                                    <td>@userTask.Task.Title</td>
+                                    <td>@userTask.Task.Description</td>
+                                    <td>@userTask.Task.DueDate.ToShortDateString()</td>
+                                    <td>@userTask.Task.Status</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
