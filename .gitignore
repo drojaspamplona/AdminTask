@@ -1,0 +1,43 @@
+# Archivos y directorios a ignorar por defecto en proyectos .NET
+
+# Directorios de salida de compilación
+bin/
+obj/
+
+# Archivos de configuración locales
+.vs/
+*.user
+*.suo
+*.cache
+
+# Paquetes de NuGet
+*.nupkg
+
+# Archivos de solución y proyecto de JetBrains
+*.sln
+*.idea/
+*.iml
+
+# Archivos de caché y de depuración de Visual Studio
+*.vscode/
+.vs/
+
+# Archivos de respaldo de Visual Studio
+*.[Bb]ak
+
+# Archivos de registro y caché de ReSharper
+_ReSharper*/
+*.resharper
+*.ReSharper*/
+
+# Archivos temporales y de caché
+[Tt]emp/
+[Ii]ntermediate/
+[Rr]elease/
+
+# Archivos de copia de seguridad de Windows
+Thumbs.db
+ehthumbs.db
+
+# Archivos de metadatos de Windows
+Desktop.ini
